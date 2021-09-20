@@ -18,9 +18,14 @@ RIS has been created to scrape image from specific subreddit filtered out Videos
 </ol>
 
 <h1> Usage </h1>
+```
+python3 main.py
+```
 <ol>
   <li> Go to https://www.reddit.com/prefs/apps and create new Application </li>
   <li> Copy both client ID and client Secret as an Input in RIS </li>
   <li> Create an csv file contained all the subreddits you want to retrieve </li>
   <li> Select amout of posts to iterate through </li>
   <li> Press run!!!! </li>
+</ol>
+
