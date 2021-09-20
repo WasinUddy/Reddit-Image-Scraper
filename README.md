@@ -18,9 +18,7 @@ RIS has been created to scrape image from specific subreddit filtered out Videos
 </ol>
 
 <h1> Usage </h1>
-```
-python3 main.py
-```
+<pre><code> python3 main.py </code></pre>
 <ol>
   <li> Go to https://www.reddit.com/prefs/apps and create new Application </li>
   <li> Copy both client ID and client Secret as an Input in RIS </li>
