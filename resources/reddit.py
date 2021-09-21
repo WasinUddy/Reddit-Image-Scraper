@@ -59,36 +59,38 @@ class Reddit:
                 #
                 # 
                 # self.progress['value'] += self.progress['value']
-                
-                if "jpg" in submission.url.lower() or "png" in submission.url.lower():
-                    
-                     
-                    resp = requests.get(submission.url.lower(), stream=True).raw
-                    image = np.asarray(bytearray(resp.read()), dtype='uint8')
-                    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-                    
+                try:
+                    if "jpg" in submission.url.lower() or "png" in submission.url.lower():
+                        
+                        
+                        resp = requests.get(submission.url.lower(), stream=True).raw
+                        image = np.asarray(bytearray(resp.read()), dtype='uint8')
+                        image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+                        
 
-                    # Compare with ignore Image
-                    ignoreERROR = False
+                        # Compare with ignore Image
+                        ignoreERROR = False
 
-                    compare_image = cv2.resize(image, (224, 224))
-                    for ignore in ignoreImages:
+                        compare_image = cv2.resize(image, (224, 224))
+                        for ignore in ignoreImages:
+                            
+                            diff = cv2.subtract(ignore, compare_image)
+                            b_ch, g_ch ,r_ch = cv2.split(diff)
+                            tdiff = cv2.countNonZero(b_ch) + cv2.countNonZero(g_ch) + cv2.countNonZero(r_ch)
+                            
+                            # Image has to be ignore
+                            if tdiff == 0:
+                                ignoreERROR = True
                         
-                        diff = cv2.subtract(ignore, compare_image)
-                        b_ch, g_ch ,r_ch = cv2.split(diff)
-                        tdiff = cv2.countNonZero(b_ch) + cv2.countNonZero(g_ch) + cv2.countNonZero(r_ch)
-                        
-                        # Image has to be ignore
-                        if tdiff == 0:
-                            ignoreERROR = True
-                    
-                    if not ignoreERROR:
-                        
-                        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                        img = PILIMAGE.fromarray(image)
-                        img.save(f"{path}/{subreddit}/{i}.png")
-                        print(f"saved --> {path}/{subreddit}/{i}.png")
-                        i += 1
+                        if not ignoreERROR:
+                            
+                            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                            img = PILIMAGE.fromarray(image)
+                            img.save(f"{path}/{subreddit}/{i}.png")
+                            print(f"saved --> {path}/{subreddit}/{i}.png")
+                            i += 1
+                except:
+                    pass
                     
                     
 
