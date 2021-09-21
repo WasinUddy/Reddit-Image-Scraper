@@ -27,3 +27,9 @@ RIS has been created to scrape image from specific subreddit filtered out Videos
   <li> Press run!!!! </li>
 </ol>
 
+<h3>subreddit CSV </h3>
+<pre><code>Dogs
+ItalianFoods
+Corgi
+</pre></code>
+
