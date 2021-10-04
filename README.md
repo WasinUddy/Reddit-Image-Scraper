@@ -7,7 +7,6 @@ Reddit has been devided by topic into called subreddit which is a great source f
 <h2>RIS Reddit Image Scraper</h2>
 RIS has been created to scrape image from specific subreddit filtered out Videos or any non image data
 
-
 <h1>Requirements</h1>
 <ol>
   <li> Python3 </li>
@@ -32,4 +31,3 @@ RIS has been created to scrape image from specific subreddit filtered out Videos
 ItalianFoods
 Corgi
 </pre></code>
-
