@@ -1,0 +1,6 @@
+numpy
+pandas
+praw
+opencv-python
+Pillow
+requests
